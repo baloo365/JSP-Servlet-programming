@@ -1,3 +1,5 @@
+<%@page import="multi.MemberDAO8"%>
+<%@page import="multi.MemberVO8"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!-- 브라우저가 보낸 데이터를 받아야 함. ==> 자바로 짜야 함. -->
@@ -10,6 +12,20 @@
     String pw = request.getParameter("pw"); //"1234"
     String name = request.getParameter("name"); //"apple"
     String tel = request.getParameter("tel"); //"010"
+    
+    //가방을 만들어서 값들을 넣고(set)!
+    MemberVO8 bag = new MemberVO8();
+    bag.setId(id);
+    bag.setPw(pw);
+    bag.setName(name);
+	bag.setTel(tel);
+	
+	
+	//dao에게 가방을 전달하자.!
+	MemberDAO8 dao = new MemberDAO8();
+	dao.insert(bag);
+    
+    
     %>
     <!-- 3. 브라우저에게 결과를 알려주기 위한 html 코드가 미리 들어가있음. -->
 <!DOCTYPE html>

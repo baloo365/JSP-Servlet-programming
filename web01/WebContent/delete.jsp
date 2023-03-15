@@ -1,29 +1,30 @@
+<%@page import="multi.MemberDAO8"%>
+<%@page import="multi.MemberVO8"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <!-- 브라우저가 보낸 데이터를 받아야 함. ==> 자바로 짜야 함. -->
-    <!-- 브라우저가 보낸 데이터를 받을 때 사용하는 부품 필요함.-->
-    <% //스크립트릿
-    //자바코드 넣는 부분!!
-    //HttpServletRequest request = new HttpServletRequest();
-    //tomcat은 미리 request를 만들어서 내장시켜놨어요!
-    String id = request.getParameter("id"); //"apple"
+    <%
+    	//클라이언트가 입력한 No를 서버에서 받아주기(자바로!)
+    	// Car car = new Car();
+    	//HttpServletRequest request = new HttpServletRequest(); 
+    	//car.run();
+    	String id = request.getParameter("id"); //String, "100" 
+    	//JSP안에 만들어진 변수는 서버의 RAM에 저장되는 지역변수!
+    	
+		
+		//dao에게 가방을 전달하자.!
+		MemberDAO8 dao = new MemberDAO8();
+		dao.delete(id);
+	    
+    
+    	
     %>
-    <!-- 3. 브라우저에게 결과를 알려주기 위한 html 코드가 미리 들어가있음. -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-body{
-	background: lime;
-}
-
-</style>
 </head>
 <body>
-회원탈퇴 요청되었음.
-<hr color="red">
-탈퇴한 id : <%= id %> <br>
+당신이 삭제를 원하는 id는 <%= id %>
 </body>
 </html>
