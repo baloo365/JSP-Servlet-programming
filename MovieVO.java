@@ -25,7 +25,7 @@ public class MovieVO {
 		this.title = title;
 	}
 	
-	public String gettTitle() {
+	public String getTitle() {
 		return title;
 	}
 

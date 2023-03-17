@@ -11,14 +11,14 @@ import multi.MemberVO8;
 
 public class MovieDAO { //CRUD
 
-	public ArrayList<MemberVO8> list() {
+	public ArrayList<MovieVO> list() {
 		ResultSet rs = null; //항목명 + 결과 데이터를 담고 있는 테이블 
 		
 		//가방들 넣어줄 큰 컨테이너 역할을 부품이 필요!
 		//ArrayList<MemberVO> ==> MemberVO만 들어간 arraylist라는 의미
-		ArrayList<MemberVO8> list = new ArrayList<>();
+		ArrayList<MovieVO> list = new ArrayList<>();
 		
-		MemberVO8 bag = null;
+		MovieVO bag = null;
 		try {
 			// 1.오라클 11g와 연결한 부품 설정
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -41,7 +41,7 @@ public class MovieDAO { //CRUD
 			//SQL부품으로 만들어주어야 함.
 			//PreparedStatement가 SQL부품!!
 			
-			String sql = "select * from multi.`member`";
+			String sql = "select id, title, content, location, director from multi.movie";
 			PreparedStatement ps = con.prepareStatement(sql); //PreparedStatement
 			//삭제!!!! ps.setString(1, id);
 			System.out.println("3. SQL문 부품(객체)으로 만들어주기 성공.");
@@ -54,20 +54,22 @@ public class MovieDAO { //CRUD
 				//System.out.println("검색결과 있음. 성공.");
 				//2. 각 컬럼에서 값들을 꺼내오자. 
 				String id2 = rs.getString(1); //id
-				String pw = rs.getString("pw"); //pw
-				String name = rs.getString(3); //name
-				String tel = rs.getString(4); //tel
+				String title = rs.getString(2); //pw
+				String content = rs.getString(3); //name
+				String location = rs.getString(4); //tel
+				String director = rs.getString(5); //tel
 				//System.out.println(	id2 + " " 
 //									+ pw + " " 
 //									+ name + " " 
 //									+ tel);
 				//검색결과를 검색화면 UI부분을 주어야 함.
 				//3. 가방을 만들자.
-				bag = new MemberVO8();
+				bag = new MovieVO();
 				bag.setId(id2);
-				bag.setPw(pw);
-				bag.setName(name);
-				bag.setTel(tel);
+				bag.setTitle(title);
+				bag.setContent(content);
+				bag.setLocation(location);
+				bag.setDirector(director);
 				
 				//4. list에 bag을 추가해주자.
 				list.add(bag);
@@ -282,7 +284,7 @@ public class MovieDAO { //CRUD
 			//유일하게 db은 인덱스가 1부터 시작!!
 			//2. 가방에서 값들을 하나씩 꺼내쓰세요. 
 			ps.setString(1, bag.getId()); //ps.setInt(1, no);
-			ps.setString(2, bag.gettTitle());
+			ps.setString(2, bag.getTitle());
 			ps.setString(3, bag.getContent());
 			ps.setString(4, bag.getLocation());
 			ps.setString(5, bag.getDirector());
