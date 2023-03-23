@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>마커 생성하기</title>
+    
+</head>
+<body>
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	//시작하자 마자 통신해보자.!!
+	$(function() {
+		$.ajax({
+			url: "index3.html", // <a href="index.html"이랑 유사하다고 보면 된다. 동기냐 비동기(ajax)냐 차이
+			success: function(){
+				alert("성공!!! 성공!!!!")
+			},
+		}) //ajax
+	}) //$
+	// 화면이 넘어가지 않고 여러 화면을 볼 수 있는 것을 비동기라고 함 //a 태그는 다 동기-화면이 넘어가면 동기임.
+		$.ajax({
+			url: "index4.html", // <a href="index.html"이랑 유사하다고 보면 된다. 동기냐 비동기(ajax)냐 차이
+			success: function(){
+				alert("성공2!!! 성공2!!!!")
+			},
+		}) //ajax
+</script>
+</body>
+</html>

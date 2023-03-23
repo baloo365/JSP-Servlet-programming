@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+//버튼 n개면 함수 n개
+	function me(){
+		//아이디 입력한 값 가지고 오기
+		name = document.getElementById("name").value
+		company = document.getElementById("company").value
+		position = document.getElementById("position").value
+		gender = document.getElementById("gender").value
+		total = company + "회사에 " + position +"으로 있는 " + name + "입니다."
+		divTag = document.getElementById("result")
+		if (gender == '남자') {
+			total = total + "<img src=yes.jpg>"
+		} else {
+			total = total + "<img src=no.jpg>"
+		}
+		index6.html		divTag.innerHTML = total
+		
+	}
+
+
+
+</script>
+</head>
+<body>
+<h5>자바 스크립트 테스트</h5>
+<hr>  
+이름: <input id="name" value="홍길동"> 
+<br>
+회사명: <input id="company" value="멀티"> 
+<br>
+직책: <input id="position" value="팀장"> 
+<br>
+성별: <input id="gender" value="남자"> 
+<br>
+<button onclick="me()">확인</button>
+
+<div id="result" style="color: red; background: yellow; width: 500px; height: 50px; font-size: 50px;">
+결과넣는곳</div>
+
+</body>
+</html>

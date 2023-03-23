@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	//시작하자 마자 통신해보자.!!
+	$(function() {
+		$('#b1').click(function(){
+			$.ajax({
+			url: "ok.html", // <a href="index.html"이랑 유사하다고 보면 된다. 동기냐 비동기(ajax)냐 차이
+			success: function(x){
+				alert(x)
+				$('#result').append(x + "<br>")
+			} //success
+		}) //ajax
+	}) //b1
+	// 화면이 넘어가지 않고 여러 화면을 볼 수 있는 것을 비동기라고 함 //a 태그는 다 동기-화면이 넘어가면 동기임.
+		$('#b2').click(function(){
+			$.ajax({
+			url: "tour.html", // <a href="index.html"이랑 유사하다고 보면 된다. 동기냐 비동기(ajax)냐 차이
+			success: function(x){
+				alert(x)
+				$('#result').append(x + "<br>")
+			} //success
+		}) //ajax
+	}) // b2
+		$('#b3').click(function(){
+			$.ajax({
+			url: "wheather.html", // <a href="index.html"이랑 유사하다고 보면 된다. 동기냐 비동기(ajax)냐 차이
+			success: function(x){
+				alert(x)
+				$('#result').append(x + "<br>")
+			} //success
+		}) //ajax
+	}) // b2
+	})
+</script>
+    
+</head>
+<body>
+<button id="b1">ok 사이트 연결 요청</button>
+<button id="b2">tour 사이트 연결 요청</button>
+<button id="b3">wheather 사이트 연결 요청</button>
+<hr color="red">
+<div id="result"></div>
+</body>
+</html>
