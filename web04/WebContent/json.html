@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.6.4.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#b1").click(function() {
+			$.ajax({
+				url : "data/rank.json",
+				success : function(doc) {
+					list = doc.rank // 
+					alert(list.length)
+					for (i = 0; i < list.length; i++) { // 타입 상관없어서 안적어줘도 된다
+						n = list[i].name
+						t = list[i].tel
+						$('#result').append(n + ", " + t + "<br>")
+						//받은 데이터를 추출해서 db에 저장해두고 싶은 경우
+						//브라우저--> 웹서버--> db
+						//받은 데이터를 웹서버에게 넘겨주면 됨.
+						//비동기 통신이 필요!!!
+						 //jsp를 호출해서 데이터 받아서 db에 넣어달라는 요청 
+					} //for
+				} //success
+			}) // ajax
+		}) // b3
+		$("#b2").click(function() {
+			$.ajax({
+				url : "data/MOCK_DATA.json",
+				success : function(doc) {
+					list = doc // 
+					alert(list.length)
+					for (i = 0; i < list.length; i++) { // 타입 상관없어서 안적어줘도 된다
+						id = list[i].id
+						email = list[i].email
+						$('#result').append(id + ", " + email + "<br>")
+						//받은 데이터를 추출해서 db에 저장해두고 싶은 경우
+						//브라우저--> 웹서버--> db
+						//받은 데이터를 웹서버에게 넘겨주면 됨.
+						//비동기 통신이 필요!!!
+						 //jsp를 호출해서 데이터 받아서 db에 넣어달라는 요청 
+					} //for
+				} //success
+			}) // ajax
+		}) // b3
+		$("#b3").click(function() {
+			$('#result').empty()
+			$.ajax({
+				url : "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.hankyung.com%2Ffeed%2Fhei.xml&api_key=mlr6atxojncqqbn3dhaixldledybkuuhkcaqlpqj",
+				success : function(doc) {
+					alert('성공!' + doc)
+					list = doc.items // 
+					alert(list.length)
+					for (i = 0; i < list.length; i++) { // 타입 상관없어서 안적어줘도 된다
+						title = list[i].title
+						console.log(title)
+						//받은 데이터를 추출해서 db에 저장해두고 싶은 경우
+						//브라우저--> 웹서버--> db
+						//받은 데이터를 웹서버에게 넘겨주면 됨.
+						//비동기 통신이 필요!!!
+						 //jsp를 호출해서 데이터 받아서 db에 넣어달라는 요청 
+					} //for
+				} //success
+			}) // ajax
+		}) // b3
+		$("#b4").click(function() {
+			//$('#result').empty()
+			$.ajax({
+				url : "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.sbs.co.kr%2Fnews%2FSectionRssFeed.do%3FsectionId%3D09%26plink%3DRSSREADER&api_key=mlr6atxojncqqbn3dhaixldledybkuuhkcaqlpqj",
+				success : function(doc) {
+					alert('성공!' + doc)
+					list = doc.items // 
+					alert(list.length)
+					for (i = 0; i < list.length; i++) { // 타입 상관없어서 안적어줘도 된다
+						title = list[i].title
+						link = list[i].link
+						$('#result').append(title + ", " + link + "<br>")
+						//받은 데이터를 추출해서 db에 저장해두고 싶은 경우
+						//브라우저--> 웹서버--> db
+						//받은 데이터를 웹서버에게 넘겨주면 됨.
+						//비동기 통신이 필요!!!
+						 //jsp를 호출해서 데이터 받아서 db에 넣어달라는 요청 
+					} //for
+				} //success
+			}) // ajax
+		})
+		$("#b5").click(function() {
+			$('#result').empty()
+			$.ajax({
+				url : "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frss.hankyung.com%2Ffeed%2Fhei.xml&api_key=mlr6atxojncqqbn3dhaixldledybkuuhkcaqlpqj",
+				success : function(doc) {
+					alert('성공!' + doc)
+					list = doc.items // 
+					alert(list.length)
+					for (i = 0; i < list.length; i++) { // 타입 상관없어서 안적어줘도 된다
+						title = list[i].title
+						console.log(title)
+						//받은 데이터를 추출해서 db에 저장해두고 싶은 경우
+						//브라우저--> 웹서버--> db
+						//받은 데이터를 웹서버에게 넘겨주면 됨.
+						//비동기 통신이 필요!!!
+						 //jsp를 호출해서 데이터 받아서 db에 넣어달라는 요청 
+					} //for
+				} //success
+			}) // ajax
+		})
+	}) // $
+</script>	
+</head>
+<body bgcolor="lime">
+	<button style='color: blue; background: pink' id="b1">JSON받아오기-1</button>
+	<button style='color: blue; background: pink' id="b2">JSON받아오기-2</button>
+	<button style='color: white; background: blue' id="b3">한경(연예)받아오기</button>
+	<button style='color: white; background: blue' id="b4">한경(IT)받아오기</button>
+	<button style='color: white; background: blue' id="b5">한경(부동산)받아오기</button>
+	<hr color="red">
+	<div id="result"></div>
+</body>
+</html>
